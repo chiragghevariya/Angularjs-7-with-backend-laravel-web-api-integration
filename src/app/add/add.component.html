@@ -1,0 +1,41 @@
+<div class="container">
+  <div class=" col-md-3 alert alert-info pull-right" id="successMessage" style="display: none;"></div>
+  <br>
+
+  <form class="form-horizontal" #informationForm="ngForm"  style="margin-top: 40px;margin-bottom: 50px">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="name">Name:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" placeholder="Enter name" id="name" [(ngModel)]="model.name" #name="ngModel" minlength="4" name="name" required>
+		<div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+		  <div *ngIf="name.errors.required">
+		    Name is required.
+		  </div>
+		  <div *ngIf="name.errors.minlength">
+		    Name must be at least 4 characters long.
+		  </div>
+
+		</div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="Description">Description:</label>
+      <div class="col-sm-6">
+        <textarea name="description" id="description" placeholder="Enter description" class="description form-control" [(ngModel)]="model.description" #description="ngModel" required> </textarea>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger">
+		  <div *ngIf="description.errors.required">
+		    Description is required.
+		  </div>
+		</div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button (click)="addinfo()" style="margin-right: 6px" type="submit" class="btn btn-default" [disabled]="!informationForm.form.valid">Submit</button> 
+        <a class="btn btn-danger" [routerLink]="['/home']">Cancle</a>
+      </div>
+    </div>
+  </form>
+</div>

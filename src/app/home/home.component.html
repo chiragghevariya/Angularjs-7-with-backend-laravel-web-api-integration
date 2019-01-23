@@ -1,0 +1,20 @@
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>UserName</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of getAllList">
+      <td>{{p.name}}</td>
+      <td>{{p.description}}</td>
+      <td>
+      	<a [routerLink]="['/edit',p.id]" class="btn btn-success">Edit</a> |
+      	<a (click)="deleteInfo(p.id)" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
